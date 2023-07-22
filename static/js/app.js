@@ -96,7 +96,7 @@ function displayMetadata(sampleID) {
         let selectedSample = resultArray[0];
 
         // Select the metadata display div element
-        const metadataDisplay = d3.select("#metadataDisplay");
+        const metadataDisplay = d3.select("#sample-metadata");
 
         // Clear the existing metadata
         metadataDisplay.html("");
@@ -108,9 +108,16 @@ function displayMetadata(sampleID) {
                 .append("p")
                 .text(`${key}: ${value}`);
         });
+        buildGauge(selectedSample.wfreq);
     })
+    
 }
 
+
+function optionChanged(sampleID){
+    displayMetadata(sampleID)
+    updateCharts(sampleID)
+}
 
 
 
